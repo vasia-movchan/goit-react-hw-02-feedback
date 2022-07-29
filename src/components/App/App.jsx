@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Section from 'components/Section/Section';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import Statistics from 'components/Statistics/Statistics';
+import styled from 'styled-components';
 
 class App extends Component {
   state = {
@@ -33,21 +34,27 @@ class App extends Component {
     const { good, neutral, bad } = this.state;
 
     return (
-      <Section title={'Please leave feedback'}>
-        <FeedbackOptions
-          options={optionsBtn}
-          onCountFeedback={this.countFeedback}
-        />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        />
-      </Section>
+      <Wrapper>
+        <Section title={'Please leave feedback'}>
+          <FeedbackOptions
+            options={optionsBtn}
+            onCountFeedback={this.countFeedback}
+          />
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
+      </Wrapper>
     );
   }
 }
+
+const Wrapper = styled.div`
+  padding: 12px;
+`;
 
 export default App;
